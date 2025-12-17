@@ -61,7 +61,7 @@ Les politiques Kyverno sont stockées dans `k8s/kyverno/admin/cluster-policies.y
 
 ### 🔢 Votre numéro d'étudiant
 
-Au début de la session, vous avez reçu un **numéro d'étudiant** de 1 à 10.
+Au début de la session, vous avez reçu un **numéro d'étudiant** de 1 à 17.
 
 **Exemple** : Si vous êtes l'étudiant n°3, votre numéro est `3`.
 
@@ -73,6 +73,7 @@ Tout au long de cet exercice, vous travaillerez dans **votre namespace** : `cesi
 - Étudiant n°1 → namespace `cesi1`
 - Étudiant n°3 → namespace `cesi3`
 - Étudiant n°10 → namespace `cesi10`
+- Étudiant n°17 → namespace `cesi17`
 
 **⚠️ Remplacez `cesiX` par votre namespace réel dans toutes les commandes !**
 
@@ -1104,7 +1105,7 @@ C'est l'approche "deny-all, allow-specific" (liste blanche).
 4. **Gouvernance** : Appliquer automatiquement les limites sans intervention manuelle
 
 **Dans notre cas** :
-- 10 étudiants (cesi1 à cesi10) partagent le même cluster
+- 17 étudiants (cesi1 à cesi17) partagent le même cluster
 - Sans ResourceQuota, un étudiant pourrait déployer 100 replicas et saturer le cluster
 - Avec ResourceQuota automatique, chaque étudiant a des limites claires :
   - CPU requests: 4 cores max
@@ -1256,7 +1257,7 @@ C'est l'application du principe **GitOps : Git is the source of truth**.
                          │
                          ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                     ÉTUDIANTS (cesi1 ... cesi10)             │
+│                     ÉTUDIANTS (cesi1 ... cesi17)             │
 │                                                               │
 │  kubectl apply -f deployment.yaml                            │
 │         │                                                     │

@@ -21,8 +21,6 @@ Détecter les secrets (clés API, tokens, mots de passe) accidentellement commit
 Créez `.github/workflows/secret-scanning.yml` :
 
 ```yaml
-name: Secret Scanning
-
 on:
   workflow_call:
 

@@ -21,8 +21,6 @@ Analyser le Dockerfile pour détecter les mauvaises configurations de sécurité
 Créez `.github/workflows/secure-iac-dockerfile-scan.yml` :
 
 ```yaml
-name: Secure IaC - Dockerfile Scan
-
 on:
   workflow_call:
 

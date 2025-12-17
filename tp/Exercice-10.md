@@ -78,11 +78,11 @@ jobs:
               --network app-network \
               ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DEPLOY_APPLI_NAME }}:latest
             sleep 10
-            curl -f http://localhost:${{ secrets.DEPLOY_APPLI_PORT }}/actuator/health || exit 1
+            curl -f http://localhost:${{ secrets.DEPLOY_APPLI_PORT }} || exit 1
             docker image prune -af --filter "until=24h"
       - name: Verify deployment
         run: |
-          curl -f http://localhost:${{ secrets.DEPLOY_SERVER }}/actuator/health
+          curl -f http://localhost:${{ secrets.DEPLOY_SERVER }}
 ```
 
 ### Étape 10.3 : Ajouter au pipeline principal

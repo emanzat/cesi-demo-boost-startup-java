@@ -41,7 +41,7 @@ Déployer automatiquement votre application Java sur Kubernetes avec ArgoCD en s
 
 ### 🔢 Votre numéro d'étudiant
 
-Au début de la session, vous avez reçu un **numéro d'étudiant** de 1 à 10.
+Au début de la session, vous avez reçu un **numéro d'étudiant** de 1 à 17.
 
 **Exemple** : Si vous êtes l'étudiant n°3, votre numéro est `3`.
 
@@ -174,12 +174,105 @@ Après avoir exécuté le script, vérifiez que vous avez bien :
 | 8 | `cesi8` | `cesi8.beincloud.io` | `cesi8-demo-java` |
 | 9 | `cesi9` | `cesi9.beincloud.io` | `cesi9-demo-java` |
 | 10 | `cesi10` | `cesi10.beincloud.io` | `cesi10-demo-java` |
+| 11 | `cesi11` | `cesi11.beincloud.io` | `cesi11-demo-java` |
+| 12 | `cesi12` | `cesi12.beincloud.io` | `cesi12-demo-java` |
+| 13 | `cesi13` | `cesi13.beincloud.io` | `cesi13-demo-java` |
+| 14 | `cesi14` | `cesi14.beincloud.io` | `cesi14-demo-java` |
+| 15 | `cesi15` | `cesi15.beincloud.io` | `cesi15-demo-java` |
+| 16 | `cesi16` | `cesi16.beincloud.io` | `cesi16-demo-java` |
+| 17 | `cesi17` | `cesi17.beincloud.io` | `cesi17-demo-java` |
 
 **⚠️ Important** : Ne passez pas à la section suivante tant que vous n'avez pas vérifié votre configuration !
 
 ---
 
 ## 📝 Instructions
+
+### Étape 12.0 : Configuration du fichier hosts (OBLIGATOIRE)
+
+**Avant de pouvoir accéder à votre application via le domaine `cesiX.beincloud.io`, vous devez configurer votre fichier hosts local.**
+
+#### 🔢 Déterminez votre serveur selon votre groupe
+
+- **Groupe 1** (étudiants 1 à 8) : Serveur `193.70.40.85`
+- **Groupe 2** (étudiants 9 à 17) : Serveur `193.70.42.147`
+
+#### 🖥️ Configuration pour macOS et Linux
+
+```bash
+# Ouvrir le fichier hosts avec les droits administrateur
+sudo nano /etc/hosts
+
+# Ajoutez la ligne suivante selon votre groupe et numéro d'étudiant :
+
+# GROUPE 1 (étudiants 1 à 8) - Exemple pour étudiant n°3 :
+193.70.40.85    cesi3.beincloud.io
+
+# GROUPE 2 (étudiants 9 à 17) - Exemple pour étudiant n°12 :
+193.70.42.147   cesi12.beincloud.io
+
+# Sauvegarder : Ctrl+O puis Entrée, puis Ctrl+X pour quitter
+```
+
+#### 🪟 Configuration pour Windows
+
+```powershell
+# Ouvrir PowerShell en tant qu'Administrateur (clic droit → Exécuter en tant qu'administrateur)
+
+# Ouvrir le fichier hosts avec Notepad
+notepad C:\Windows\System32\drivers\etc\hosts
+
+# Ajoutez la ligne suivante selon votre groupe et numéro d'étudiant :
+
+# GROUPE 1 (étudiants 1 à 8) - Exemple pour étudiant n°3 :
+193.70.40.85    cesi3.beincloud.io
+
+# GROUPE 2 (étudiants 9 à 17) - Exemple pour étudiant n°12 :
+193.70.42.147   cesi12.beincloud.io
+
+# Sauvegarder : Fichier → Enregistrer
+```
+
+#### ✅ Vérifier la configuration
+
+```bash
+# Vérifier que le domaine est résolu correctement (remplacez cesiX par votre numéro)
+ping cesiX.beincloud.io
+
+# Résultat attendu pour groupe 1 (étudiants 1-8) :
+# PING cesi3.beincloud.io (193.70.40.85): 56 data bytes
+# 64 bytes from 193.70.40.85: icmp_seq=0 ttl=64 time=1.234 ms
+
+# Résultat attendu pour groupe 2 (étudiants 9-17) :
+# PING cesi12.beincloud.io (193.70.42.147): 56 data bytes
+# 64 bytes from 193.70.42.147: icmp_seq=0 ttl=64 time=1.234 ms
+```
+
+#### 📋 Tableau de correspondance hosts par groupe
+
+| N° Étudiant | Groupe | Ligne à ajouter dans hosts |
+|-------------|--------|----------------------------|
+| 1 | 1 | `193.70.40.85    cesi1.beincloud.io` |
+| 2 | 1 | `193.70.40.85    cesi2.beincloud.io` |
+| 3 | 1 | `193.70.40.85    cesi3.beincloud.io` |
+| 4 | 1 | `193.70.40.85    cesi4.beincloud.io` |
+| 5 | 1 | `193.70.40.85    cesi5.beincloud.io` |
+| 6 | 1 | `193.70.40.85    cesi6.beincloud.io` |
+| 7 | 1 | `193.70.40.85    cesi7.beincloud.io` |
+| 8 | 1 | `193.70.40.85    cesi8.beincloud.io` |
+| 9 | 2 | `193.70.42.147   cesi9.beincloud.io` |
+| 10 | 2 | `193.70.42.147   cesi10.beincloud.io` |
+| 11 | 2 | `193.70.42.147   cesi11.beincloud.io` |
+| 12 | 2 | `193.70.42.147   cesi12.beincloud.io` |
+| 13 | 2 | `193.70.42.147   cesi13.beincloud.io` |
+| 14 | 2 | `193.70.42.147   cesi14.beincloud.io` |
+| 15 | 2 | `193.70.42.147   cesi15.beincloud.io` |
+| 16 | 2 | `193.70.42.147   cesi16.beincloud.io` |
+| 17 | 2 | `193.70.42.147   cesi17.beincloud.io` |
+
+
+
+---
 
 ### Étape 12.1 : Connexion à ArgoCD
 

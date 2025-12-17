@@ -21,8 +21,6 @@ Créer le premier workflow réutilisable pour compiler et tester l'application J
 Créez le fichier `.github/workflows/build-unit-tests.yml` :
 
 ```yaml
-name: Build & Unit Tests
-
 on:
   workflow_call:  # ⚠️ Important : permet d'être appelé par d'autres workflows
 

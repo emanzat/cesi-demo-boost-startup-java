@@ -21,10 +21,11 @@ Ajouter l'analyse de sécurité statique (SAST) avec Semgrep et CodeQL pour dét
 Créez `.github/workflows/code-quality-sast.yml` :
 
 ```yaml
-name: Code Quality & SAST
-
 on:
   workflow_call:
+    secrets:
+      SEMGREP_APP_TOKEN:
+        required: false
 
 permissions:
   security-events: write

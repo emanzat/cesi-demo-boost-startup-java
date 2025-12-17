@@ -55,15 +55,12 @@ OWASP Dependency-Check télécharge la base de données NVD (National Vulnerabil
 Créez `.github/workflows/sca-dependency-scan.yml` :
 
 ```yaml
-name: SCA - Dependency Scan
-
 on:
   workflow_call:
     secrets:
       NVD_API_KEY:
         required: false
-        description: 'NVD API Key for faster dependency database download'
-
+        description: 'NVD API Key for faster dependency database download (optional)'
 permissions:
   security-events: write
   contents: read

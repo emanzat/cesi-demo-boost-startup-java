@@ -39,6 +39,8 @@ on:
         required: true
       DOCKERHUB_TOKEN:
         required: true
+      DEPLOY_APPLI_NAME:
+        required: true
 
 jobs:
   publish-docker-hub:
