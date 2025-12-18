@@ -6,8 +6,8 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-    - cron: '0 2 * * 1'
-  workflow_dispatch:
+    - cron: '0 2 * * 1'  # Tous les lundis à 2h du matin
+  workflow_dispatch:  # Permet le déclenchement manuel
 
 permissions:
   security-events: write
@@ -20,3 +20,15 @@ jobs:
   # ═══════════════════════════════════════════════
   build-and-test:
     uses: ./.github/workflows/build-unit-tests.yml
+  # ═══════════════════════════════════════════════
+  # ÉTAPE 2 : ANALYSE DE SÉCURITÉ STATIQUE (SAST)
+  # ═══════════════════════════════════════════════
+  code-quality-sast:
+    needs: build-and-test  # ⚠️ Attend que le build soit terminé
+    uses: ./.github/workflows/code-quality-sast.yml
+  # ═══════════════════════════════════════════════
+  # ÉTAPE 3 : DÉTECTION DE SECRETS
+  # ═══════════════════════════════════════════════
+  secret-scanning:
+    needs: build-and-test  # ⚠️ S'exécute en PARALLÈLE avec code-quality-sast
+    uses: ./.github/workflows/secret-scanning.yml
